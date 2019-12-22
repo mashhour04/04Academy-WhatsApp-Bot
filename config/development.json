@@ -1,0 +1,5 @@
+{ 
+    "server_url":"https://7ba6c1f9.ngrok.io/",
+    "mongodb": "mongodb://localhost:27017/movies",
+    "local":true
+}
