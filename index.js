@@ -14,7 +14,7 @@ let {BootstrapStep}   = require("./client/js/BootstrapStep.js");
 
 console.log('setting up secure web socket on port', process.env.SOCKET_PORT, process.env.NODE_PORT, process.env.PYTHON_PORT)
 let wss = new WebSocket.Server({ port: process.env.SOCKET_PORT });
-console.log("whatsapp-web-reveng API server listening on port 2019");
+console.log("whatsapp-web-reveng API server listening on port 2021");
 
 let backendInfo = {
     url: "ws://localhost:2020",

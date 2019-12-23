@@ -119,8 +119,9 @@ class SenderService {
                     condition: obj => obj.type == "whatsapp_message_received" && obj.message && obj.message_type && obj.timestamp && obj.resource_instance_id == this.backendWebsocket.activeWhatsAppInstanceId,
                     keepWhenHit: true
                 }).then(whatsAppMessage => {
-                    if(!this.clientInfo) {
-                        //this.getLoginInfo();
+                    if(!this.clientInfo && !this.clientInfoRequest) {
+                        this.clientInfoRequest = true;
+                        this.getLoginInfo();
                     }
                     let d = whatsAppMessage.data;
                     this.clientWebsocket.send({ type: "whatsapp_message_received", message: d.message, message_type: d.message_type, timestamp: d.timestamp });
@@ -146,6 +147,7 @@ class SenderService {
             }
         }).run(backendInfo.timeout).then(backendResponse => {
             console.log('backend response from gettting login info', backendResponse);
+            this.clientInfoRequest = false;
         }).catch(reason => {
             console.log('error getting login info', reason);
         })

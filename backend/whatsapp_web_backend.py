@@ -32,10 +32,10 @@ class WhatsAppWeb(WebSocket):
     def sendJSON(self, obj, tag=None):
         if "from" not in obj:
             obj["from"] = "backend";
-        eprint("sending " + json.dumps(obj));
+        eprint("sending " + json.dumps(obj, ensure_ascii=False).encode('utf8'));
         if tag is None:
             tag = str(getTimestampMs());
-        self.sendMessage(tag + "," + json.dumps(obj));
+        self.sendMessage(tag + "," + json.dumps(obj, ensure_ascii=False).encode('utf8'));
 
     def sendError(self, reason, tag=None):
         eprint("sending error: " + reason);

@@ -249,7 +249,13 @@ class WhatsAppWebClient:
         self.activeWs.send(message)
         
     def getLoginInfo(self, callback):
-        callback["func"]({ "type": "login_info", "data": self.loginInfo }, callback);
+        info = dict(self.loginInfo)
+        info["publicKey"] = base64.b64encode(self.loginInfo["publicKey"].serialize())
+        info["privateKey"] = base64.b64encode(self.loginInfo["privateKey"].serialize())
+        info["key"]["encKey"] = base64.b64encode(self.loginInfo["key"]["encKey"])
+        info["key"]["macKey"] = base64.b64encode(self.loginInfo["key"]["macKey"])
+        
+        callback["func"]({ "type": "login_info", "data": info }, callback);
     
     def getConnectionInfo(self, callback):
         callback["func"]({ "type": "connection_info", "data": self.connInfo }, callback);

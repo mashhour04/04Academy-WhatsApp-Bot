@@ -24,13 +24,13 @@ class WebSocketClient {
             let actualMsg = this.constructorConfig.getOnMessageData ? this.constructorConfig.getOnMessageData(msg) : msg;
             let tag = actualMsg.split(",")[0];
             let obj = JSON.parse(actualMsg.substr(tag.length + 1));
-            console.log("got message ", obj);
+            //console.log("got message ", obj);
 
             let idx = this.expectedMsgs.findIndex(e => e.condition(obj, tag));
             if(idx != -1) {
                 let currMsg = this.expectedMsgs[idx].keepWhenHit ? this.expectedMsgs[idx] : this.expectedMsgs.splice(idx, 1)[0];
                 //if(!currMsg.keepWhenHit)
-                //	console.log("just removed ", currMsg.condition.toString(), " from expectedMsgs");
+                //console.log("just removed ", currMsg.condition.toString(), " from expectedMsgs");
                 //console.log("resolving ", obj, " to index ", idx);
                 currMsg.resolve({
                     data: obj,
