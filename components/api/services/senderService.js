@@ -2,8 +2,8 @@
 const { StringDecoder } = require("string_decoder");
 const WebSocket = require("ws");
 
-const { WebSocketClient } = require("../../client/js/WebSocketClient");
-const { BootstrapStep } = require("../../client/js/BootstrapStep.js");
+const { WebSocketClient } = require("../../../client/js/WebSocketClient");
+const { BootstrapStep } = require("../../../client/js/BootstrapStep.js");
 
 let backendInfo = {
     url: "ws://localhost:2020",

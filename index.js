@@ -4,7 +4,7 @@ let path = require("path");
 let {StringDecoder} = require("string_decoder");
 let express = require("express");
 let WebSocket = require("ws");
-let { botServices } = require('./bot');
+let { botServices } = require('./components/bot');
 let app = express();
 require('dotenv').config();
 
