@@ -1,0 +1,50 @@
+{
+    "version": "0.2.0",
+    "compounds": [
+      {
+        "name": "Backend+Node",
+        "configurations": ["Backend", "Node"]
+      }
+    ],
+    "configurations": [{
+        "name": "Backend",
+        "request": "launch",
+        "type": "python",
+        "program": "${workspaceFolder}/backend/whatsapp_web_backend.py",
+        "stopOnEntry": true,
+        "args": ["-i", "client", "-e", "py"],
+        "cwd": "${workspaceRoot}",
+        "env": {
+          "PYTHON_PORT": "2021"
+        },
+        "preLaunchTask": null
+      }, {
+        "name": "Node",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/index.js",
+        "stopOnEntry": false,
+        "args": ["-i", "client", "-e", "js"],
+        "cwd": "${workspaceRoot}",
+        "preLaunchTask": null,
+        "runtimeExecutable": null,
+        "runtimeArgs": ["--nolazy"],
+        "env": {
+          "NODE_PORT": "2018",
+          "SOCKET_PORT": "2021"
+        },
+        "sourceMaps": false
+      }, {
+        "name": "Attach",
+        "type": "node",
+        "request": "attach",
+        "port": 5858,
+        "address": "localhost",
+        "restart": false,
+        "sourceMaps": false,
+        "localRoot": "${workspaceRoot}",
+        "remoteRoot": null
+      }
+    ]
+  }
+  
